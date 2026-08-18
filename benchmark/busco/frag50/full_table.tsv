@@ -1,0 +1,119 @@
+# BUSCO version is: 6.0.0 
+# The lineage dataset is: bacteria_odb12 (Creation date: 2026-05-22, number of genomes: 3130, number of BUSCOs: 116)
+# Busco id	Status	Sequence	Gene Start	Gene End	Strand	Score	Length	OrthoDB url	Description
+5293449at2	Missing
+9759736at2	Complete	NC_010622.1_1500000_1550000	6795	4744	-	538.6	529	https://v12-1.orthodb.org/?query=9759736at2	NAD-dependent DNA ligase
+9767721at2	Missing
+9771806at2	Missing
+9776390at2	Missing
+9776733at2	Missing
+9778364at2	Complete	NC_010622.1_700000_750000	22922	24232	+	447.1	364	https://v12-1.orthodb.org/?query=9778364at2	ATPase
+9778722at2	Complete	NC_010622.1_3150000_3200000	29308	28481	-	454.7	276	https://v12-1.orthodb.org/?query=9778722at2	Ribosomal protein L2
+9781053at2	Missing
+9782003at2	Fragmented	NC_010622.1_1600000_1650000	11062	10400	-	51.9	191	https://v12-1.orthodb.org/?query=9782003at2	peptidase
+9788336at2	Missing
+9790352at2	Missing
+9791908at2	Missing
+9793681at2	Missing
+9797833at2	Complete	NC_010622.1_3150000_3200000	28470	28195	-	146.5	78	https://v12-1.orthodb.org/?query=9797833at2	Ribosomal protein S19
+9799262at2	Missing
+9800507at2	Missing
+9800696at2	Missing
+9800719at2	Missing
+9801107at2	Complete	NC_010622.1_1600000_1650000	21465	19804	-	594.8	446	https://v12-1.orthodb.org/?query=9801107at2	CTP synthase
+9801213at2	Fragmented	NC_010622.1_3200000_3250000	46187	44370	-	118.6	199	https://v12-1.orthodb.org/?query=9801213at2	asparagine synthase (glutamine-hydrolyzing)
+9801330at2	Missing
+9801549at2	Missing
+9801753at2	Complete	NC_010622.1_3450000_3479187	28421	28191	-	100.5	73	https://v12-1.orthodb.org/?query=9801753at2	membrane protein insertion efficiency factor
+9802065at2	Missing
+9802219at2	Missing
+9802304at2	Missing
+9802309at2	Missing
+9802366at2	Complete	NC_010622.1_3150000_3200000	36027	35647	-	218.3	118	https://v12-1.orthodb.org/?query=9802366at2	Ribosomal protein S12
+9802408at2	Complete	NC_010622.1_3150000_3200000	49432	49001	-	233.8	140	https://v12-1.orthodb.org/?query=9802408at2	Ribosomal protein L11
+9802554at2	Missing
+9802589at2	Complete	NC_010622.1_3150000_3200000	27044	26628	-	149.1	105	https://v12-1.orthodb.org/?query=9802589at2	ribosomal protein L16
+9802617at2	Complete	NC_010622.1_3150000_3200000	24295	23900	-	149.3	114	https://v12-1.orthodb.org/?query=9802617at2	Ribosomal protein S8
+9802672at2	Missing
+9803017at2	Missing
+9803201at2	Complete	NC_010622.1_3150000_3200000	30242	29622	-	247.9	203	https://v12-1.orthodb.org/?query=9803201at2	ribosomal protein L4
+9803250at2	Complete	NC_010622.1_3150000_3200000	20379	20161	-	122.4	68	https://v12-1.orthodb.org/?query=9803250at2	translation initiation factor IF-1
+9803420at2	Missing
+9803474at2	Missing
+9803541at2	Complete	NC_010622.1_850000_900000	18282	18665	+	157.8	105	https://v12-1.orthodb.org/?query=9803541at2	Ribosomal protein L19
+9803610at2	Complete	NC_010622.1_3150000_3200000	19982	19617	-	155.1	103	https://v12-1.orthodb.org/?query=9803610at2	ribosomal protein S13
+9803667at2	Complete	NC_010622.1_650000_700000	3680	2688	-	322.2	276	https://v12-1.orthodb.org/?query=9803667at2	riboflavin kinase
+9803672at2	Complete	NC_010622.1_3150000_3200000	19037	18414	-	231.8	180	https://v12-1.orthodb.org/?query=9803672at2	Ribosomal protein S4
+9803740at2	Complete	NC_010622.1_3150000_3200000	49000	48302	-	296.1	210	https://v12-1.orthodb.org/?query=9803740at2	Ribosomal protein L1
+9803773at2	Missing
+9803884at2	Complete	NC_010622.1_1800000_1850000	34461	31837	-	1234.6	858	https://v12-1.orthodb.org/?query=9803884at2	Alanyl-tRNA synthetase
+9803954at2	Complete	NC_010622.1_3150000_3200000	46677	42571	-	1293.5	855	https://v12-1.orthodb.org/?query=9803954at2	DNA-directed RNA polymerase subunit beta
+9803965at2	Missing
+9804006at2	Missing
+9804072at2	Missing
+9804243at2	Missing
+9804305at2	Fragmented	NC_010622.1_800000_850000	42229	43959	+	198.1	89	https://v12-1.orthodb.org/?query=9804305at2	Polyribonucleotide nucleotidyltransferase
+9804464at2	Complete	NC_010622.1_3150000_3200000	31400	31089	-	173.2	101	https://v12-1.orthodb.org/?query=9804464at2	Ribosomal protein S10
+9804478at2	Missing
+9804647at2	Complete	NC_010622.1_700000_750000	24326	25624	+	524.6	383	https://v12-1.orthodb.org/?query=9804647at2	Seryl-tRNA synthetase
+9804716at2	Complete	NC_010622.1_1600000_1650000	18813	17530	-	566.2	367	https://v12-1.orthodb.org/?query=9804716at2	enolase
+9804753at2	Missing
+9804933at2	Complete	NC_010622.1_950000_1000000	1	2142	+	659.4	578	https://v12-1.orthodb.org/?query=9804933at2	Excinuclease ABC, C subunit
+9805007at2	Complete	NC_010622.1_3150000_3200000	23880	23350	-	235.3	176	https://v12-1.orthodb.org/?query=9805007at2	50S ribosomal protein L6
+9805026at2	Complete	NC_010622.1_900000_950000	40124	41398	+	249.4	208	https://v12-1.orthodb.org/?query=9805026at2	ribonuclease III
+9805455at2	Missing
+9805462at2	Missing
+9805609at2	Complete	NC_010622.1_650000_700000	13064	12831	-	123.6	70	https://v12-1.orthodb.org/?query=9805609at2	peptidase T
+9805706at2	Complete	NC_010622.1_3150000_3200000	18289	17312	-	344.8	265	https://v12-1.orthodb.org/?query=9805706at2	DNA-directed RNA polymerase subunit alpha
+9805969at2	Complete	NC_010622.1_3150000_3200000	28182	27853	-	128.8	103	https://v12-1.orthodb.org/?query=9805969at2	Ribosomal protein L22
+9806014at2	Missing
+9806135at2	Complete	NC_010622.1_3150000_3200000	30901	30242	-	289.5	206	https://v12-1.orthodb.org/?query=9806135at2	Ribosomal protein L3
+9806197at2	Missing
+9806379at2	Complete	NC_010622.1_3150000_3200000	25862	25494	-	144.7	106	https://v12-1.orthodb.org/?query=9806379at2	Ribosomal protein L14
+9806396at2	Complete	NC_010622.1_3150000_3200000	27841	27047	-	269.1	186	https://v12-1.orthodb.org/?query=9806396at2	Ribosomal protein S3
+9806415at2	Complete	NC_010622.1_3150000_3200000	19588	19184	-	198.7	119	https://v12-1.orthodb.org/?query=9806415at2	Ribosomal protein S11
+9806626at2	Complete	NC_010622.1_3150000_3200000	25162	24623	-	279.4	176	https://v12-1.orthodb.org/?query=9806626at2	Ribosomal protein L5
+9806637at2	Complete	NC_010622.1_3000000_3050000	26370	25417	-	244.7	237	https://v12-1.orthodb.org/?query=9806637at2	methyltransferase
+9806651at2	Complete	NC_010622.1_2200000_2250000	2458	365	-	922.3	589	https://v12-1.orthodb.org/?query=9806651at2	excinuclease ABC (subunit B)
+9806661at2	Missing
+9806954at2	Missing
+9807019at2	Complete	NC_010622.1_0_50000	362	1918	+	568.8	422	https://v12-1.orthodb.org/?query=9807019at2	chromosome replication initiation protein
+9807064at2	Complete	NC_010622.1_200000_250000	28348	27389	-	124.2	195	https://v12-1.orthodb.org/?query=9807064at2	biotin 
+9807233at2	Missing
+9807240at2	Missing
+9807416at2	Complete	NC_010622.1_850000_900000	17370	18137	+	232.1	194	https://v12-1.orthodb.org/?query=9807416at2	tRNA (guanine-N1)-methyltransferase
+9807419at2	Complete	NC_010622.1_3150000_3200000	25484	25176	-	61.0	68	https://v12-1.orthodb.org/?query=9807419at2	Ribosomal protein L24
+9807458at2	Missing
+9807553at2	Missing
+9807653at2	Complete	NC_010622.1_3150000_3200000	35467	34997	-	223.0	145	https://v12-1.orthodb.org/?query=9807653at2	Ribosomal protein S7
+9807878at2	Complete	NC_010622.1_850000_900000	16299	16553	+	106.1	71	https://v12-1.orthodb.org/?query=9807878at2	Ribosomal protein S16
+9808036at2	Missing
+9808150at2	Complete	NC_010622.1_750000_800000	4746	5432	+	250.4	184	https://v12-1.orthodb.org/?query=9808150at2	Guanylate kinase
+9808348at2	Missing
+9808773at2	Missing
+9808936at2	Complete	NC_010622.1_3000000_3050000	16216	15095	-	416.4	351	https://v12-1.orthodb.org/?query=9808936at2	UDP-N-acetylglucosamine:N-acetylmuramyl- (pentapeptide) pyrophosphoryl-undecaprenol N-acetylglucosamine transferase
+9808966at2	Missing
+9809045at2	Complete	NC_010622.1_3150000_3200000	22957	22439	-	244.3	163	https://v12-1.orthodb.org/?query=9809045at2	ribosomal protein S5
+9809052at2	Missing
+9809073at2	Complete	NC_010622.1_3150000_3200000	17160	16765	-	156.5	117	https://v12-1.orthodb.org/?query=9809073at2	Ribosomal protein L17
+9809075at2	Fragmented	NC_010622.1_3150000_3200000	50000	49584	-	128.2	115	https://v12-1.orthodb.org/?query=9809075at2	transcription antitermination protein NusG
+9809084at2	Complete	NC_010622.1_100000_150000	32182	31307	-	254.1	214	https://v12-1.orthodb.org/?query=9809084at2	methyltransferase
+9809248at2	Complete	NC_010622.1_3150000_3200000	21734	20388	-	593.7	415	https://v12-1.orthodb.org/?query=9809248at2	Preprotein translocase subunit SecY
+9809356at2	Missing
+9809796at2	Complete	NC_010622.1_3000000_3050000	19007	17493	-	429.3	405	https://v12-1.orthodb.org/?query=9809796at2	UDP-N-acetylmuramoylalanine--D-glutamate ligase
+9810191at2	Complete	NC_010622.1_2450000_2500000	9745	11925	+	702.3	619	https://v12-1.orthodb.org/?query=9810191at2	tRNA synthetase
+9810293at2	Complete	NC_010622.1_3150000_3200000	22215	21781	-	69.7	110	https://v12-1.orthodb.org/?query=9810293at2	Ribosomal protein L15
+9810939at2	Complete	NC_010622.1_3150000_3200000	23337	22972	-	145.3	116	https://v12-1.orthodb.org/?query=9810939at2	Ribosomal protein L18
+9811714at2	Complete	NC_010622.1_3150000_3200000	26426	26154	-	129.7	73	https://v12-1.orthodb.org/?query=9811714at2	Ribosomal protein S17
+9811748at2	Complete	NC_010622.1_3150000_3200000	47425	47048	-	90.1	93	https://v12-1.orthodb.org/?query=9811748at2	Ribosomal protein L7/L12
+9811804at2	Missing
+9812008at2	Missing
+9812272at2	Missing
+9812273at2	Missing
+9812702at2	Missing
+9812769at2	Complete	NC_010622.1_1250000_1300000	17907	17026	-	133.7	273	https://v12-1.orthodb.org/?query=9812769at2	ATP synthase
+9812943at2	Missing
+9813334at2	Missing
+9813375at2	Complete	NC_010622.1_3000000_3050000	10616	9423	-	362.6	291	https://v12-1.orthodb.org/?query=9813375at2	cell division protein
+9814755at2	Missing
+9815296at2	Complete	NC_010622.1_3150000_3200000	42549	38308	-	1363.3	859	https://v12-1.orthodb.org/?query=9815296at2	DNA-directed RNA polymerase subunit beta'

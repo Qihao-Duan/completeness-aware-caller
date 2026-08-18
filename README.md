@@ -107,9 +107,19 @@ python3 scripts/degrade_genome.py \
 # then BUSCO + FastANI per benchmark/benchmark_summary.md
 ```
 
-Raw evidence is committed under `benchmark/`: BUSCO `result.json` for each
-level, the FastANI matrix, and the per-gene truth table derived from RefSeq
-GFF coordinates.
+Raw evidence is committed under `benchmark/`. For each retention level,
+`benchmark/busco/frag*/` holds BUSCO's own unedited output — `short_summary.txt`
+(the C/S/D/F/M score string as BUSCO printed it), `full_table.tsv` (per-ortholog
+status) and `missing_busco_list.tsv` (exactly which markers were not found) —
+alongside the parsed `result.json`. `benchmark/fastani_matrix.tsv` is FastANI's
+raw output, and `benchmark/gene_status.tsv` is the per-gene truth table derived
+from RefSeq GFF coordinates.
+
+The three source genomes are deliberately *not* vendored. Accessions
+(`GCF_000020045.1`, `GCF_000013645.1`, `GCF_000009485.1`) are more verifiable
+than a copy, and `scripts/download_genomes.sh` fetches them byte-identical.
+The degraded assemblies are likewise omitted: `degrade_genome.py` regenerates
+them deterministically from seed 42.
 
 ---
 

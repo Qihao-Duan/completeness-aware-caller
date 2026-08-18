@@ -1,0 +1,29 @@
+# BUSCO version is: 6.0.0 
+# The lineage dataset is: bacteria_odb12 (Creation date: 2026-05-22, number of genomes: 3130, number of BUSCOs: 116)
+# Summarized benchmarking in BUSCO notation for file /Users/qihao/Documents/charite/Projects/hackethon/2026-0818-clawbio/data/degraded/stm815_frag70.fna
+# BUSCO was run in mode: prok_genome_prod
+# Gene predictor used: prodigal
+
+	***** Results: *****
+
+	C:68.1%[S:68.1%,D:0.0%],F:1.7%,M:30.2%,n:116	   
+	79	Complete BUSCOs (C)			   
+	79	Complete and single-copy BUSCOs (S)	   
+	0	Complete and duplicated BUSCOs (D)	   
+	2	Fragmented BUSCOs (F)			   
+	35	Missing BUSCOs (M)			   
+	116	Total BUSCO groups searched		   
+
+Assembly Statistics:
+	122	Number of scaffolds
+	122	Number of contigs
+	6031454	Total length
+	0.000%	Percent gaps
+	50 kbp	Scaffold N50
+	50 kbp	Contigs N50
+
+
+Dependencies and versions:
+	hmmsearch: 3.4
+	bbtools: None
+	prodigal: 2.6.3
