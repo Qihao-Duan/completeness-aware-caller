@@ -172,11 +172,15 @@ def write_outputs(outdir, completeness, gene_calls, ani_gate, argv):
 
 
 # ------------------------------------------------------------------ demo
+# Mirrors the real frag70 level of the STM815 benchmark. nodB/nodC/nodS/nodU
+# lose every copy and vanish from the assembly; nifH survives only because
+# STM815 carries two copies of it on pBPHY02 — copy number, not importance,
+# decides which genes a fragmented assembly can still show you.
 DEMO_GENES = [
-    {"gene": "nifH", "found": False},
     {"gene": "nodC", "found": False},
+    {"gene": "nodB", "found": False},
+    {"gene": "nifH", "found": True},
     {"gene": "nifD", "found": True},
-    {"gene": "nodA", "found": True},
 ]
 DEMO_COMPLETENESS = 0.70
 DEMO_ANI = (81.45, 80.75)  # STM815@70% vs LB400 and vs J2315 (benchmark)

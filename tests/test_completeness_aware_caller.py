@@ -102,7 +102,11 @@ def test_demo_result_json_schema(tmp_path):
     data = json.loads((out / "result.json").read_text())
     assert data["completeness"] == pytest.approx(0.70)
     statuses = {g["gene"]: g["status"] for g in data["gene_calls"]}
-    assert statuses["nifH"] == "cannot_conclude"
+    # nodC loses every copy at frag70 -> unprovable absence, must abstain.
+    assert statuses["nodC"] == "cannot_conclude"
+    assert statuses["nodB"] == "cannot_conclude"
+    # nifH survives frag70 only because STM815 carries two copies of it.
+    assert statuses["nifH"] == "present"
     assert statuses["nifD"] == "present"
     assert data["ani_gate"]["decision"] in ("rank", "cannot_conclude")
 

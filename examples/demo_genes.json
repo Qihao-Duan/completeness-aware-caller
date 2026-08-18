@@ -1,6 +1,6 @@
 [
-  {"gene": "nifH", "found": false},
   {"gene": "nodC", "found": false},
-  {"gene": "nifD", "found": true},
-  {"gene": "nodA", "found": true}
+  {"gene": "nodB", "found": false},
+  {"gene": "nifH", "found": true},
+  {"gene": "nifD", "found": true}
 ]

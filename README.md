@@ -12,21 +12,31 @@ support the claim. The deliverable is the refusal.
 
 ## The problem, in one number
 
-Take *Paraburkholderia phymatum* STM815 — a textbook nitrogen fixer, complete
-genome, all 21 `nif`/`nod`/`fix` genes sitting on plasmid pBPHY02. Degrade it
-to 70% of its contigs, the sort of completeness that passes as a perfectly
-publishable MAG, and `nifH` and `nodC` fall into the discarded fraction.
+Take *Paraburkholderia phymatum* STM815 — a textbook symbiont, complete
+genome, all 21 `nif`/`nod`/`fix` records sitting on plasmid pBPHY02. Degrade
+it to 70% of its contigs, the sort of completeness that passes as a perfectly
+publishable MAG, and every copy of `nodB`, `nodC`, `nodS` and `nodU` falls
+into the discarded fraction — the entire Nod-factor biosynthesis set, the
+machinery this strain uses to signal its legume host and trigger nodulation.
 
-A naive pipeline now reports: **this organism does not fix nitrogen.**
+A naive pipeline now reports: **this organism cannot nodulate.**
 It is wrong, and nothing in its output says so.
 
 `completeness-aware-caller` reports instead:
 
 ```
-| nifH | CANNOT CONCLUDE | 0.68 | CANNOT CONCLUDE absence: the assembly is only
+| nodC | CANNOT CONCLUDE | 0.68 | CANNOT CONCLUDE absence: the assembly is only
 68% complete, so a truly present gene would be missed with ~32% probability.
 Re-sequence or close the assembly before asserting loss of function. |
 ```
+
+**And a finding we did not go looking for.** `nifH` survives every degradation
+level — not by luck, but because STM815 carries *two* copies of it on pBPHY02
+(at 517,691 and 582,554). One copy is lost at 70% retention; the other keeps
+the gene detectable. `nodI` and `nifT` are likewise duplicated. Whether a gene
+goes silently missing from a fragmented assembly is decided by its copy
+number, not by its importance — and single-copy genes are the vulnerable ones.
+No pipeline currently tells you this.
 
 ---
 
@@ -37,20 +47,42 @@ Re-sequence or close the assembly before asserting loss of function. |
 (`bacteria_odb12`, n=116) and FastANI 1.34 run on every level. References:
 *P. xenovorans* LB400 (environmental) and *B. cenocepacia* J2315 (clinical).
 
-| Retention | BUSCO C% | Symbiosis genes lost / fragmented (of 21) | Naive call | This skill | ANI→LB400 | ANI→J2315 | Margin | ANI gate |
-|-----------|----------|-------------------------------------------|------------|------------|-----------|-----------|--------|----------|
-| 100% | 98.3 | 0 / 0 | — | absence calls allowed | 81.69 | 81.02 | 0.67 | RANK |
-| 90%  | 78.4 | 0 / 0 | — | cannot conclude | 81.51 | 80.83 | 0.68 | RANK |
-| 70%  | 68.1 | 6 / 1 — incl. **nifH**, **nodC** | "does not fix N₂" ❌ | **CANNOT CONCLUDE** | 81.45 | 80.75 | 0.70 | RANK |
-| 50%  | 48.3 | 7 / 1 | "does not fix N₂" ❌ | **CANNOT CONCLUDE** | 81.28 | 80.58 | 0.70 | **CANNOT CONCLUDE** |
+These are two independent stories, so here are two tables.
 
-Two gates, falling at different depths. The **functional** gate closes at 90%
-retention; the **taxonomic** gate holds until 50%, where the 0.70-point ANI
-margin separating an environmental relative from a clinical lineage drops
-below twice the drift that incompleteness alone induces. The gradient was
-measured, not assumed.
+**Functional layer — when may you say a gene is absent?**
+"Undetectable" means *every* copy fell into a discarded window, so a gene
+search genuinely returns nothing. The truth never changes: all of these genes
+are present in the organism throughout.
 
-A third finding worth stating: dropping 9.7% of bases produced M=19.8% missing
+| Retention | BUSCO C% | Undetectable genes | A naive search concludes | Absence gate |
+|-----------|----------|--------------------|--------------------------|--------------|
+| 100% | 98.3 | none | (nothing missing) | open — absence callable |
+| 90%  | 78.4 | none | (nothing missing) | shut — C below 95% |
+| 70%  | 68.1 | **nodB nodC nodS nodU** | "cannot nodulate" ❌ | shut — CANNOT CONCLUDE |
+| 50%  | 48.3 | + nodI → five genes | "cannot nodulate" ❌ | shut — CANNOT CONCLUDE |
+
+**Taxonomic layer — the signal stays put while the noise climbs.**
+
+| Retention | Completeness | ANI→LB400 | ANI→J2315 | Margin (signal) | Drift (noise) | Threshold 2×drift | Decision |
+|-----------|--------------|-----------|-----------|-----------------|---------------|-------------------|----------|
+| 100% | 0.983 | 81.69 | 81.02 | 0.67 | 0.01 | 0.03 | rank |
+| 90%  | 0.784 | 81.51 | 80.83 | 0.68 | 0.18 | 0.35 | rank |
+| 70%  | 0.681 | 81.45 | 80.75 | 0.70 | 0.26 | 0.52 | rank |
+| 50%  | 0.483 | 81.28 | 80.58 | 0.70 | 0.42 | **0.85** | **CANNOT CONCLUDE** |
+
+Read the last three columns. The margin is essentially flat at 0.67–0.70,
+because the real difference between an environmental *Paraburkholderia* and a
+clinical *B. cepacia*-complex lineage does not change when you shred the
+assembly. The threshold climbs from 0.03 to 0.85, because drift does. They
+cross at 50% retention, and the gate shuts. Note what is being separated:
+0.70 ANI points is the entire evidentiary distance between a nitrogen-fixing
+soil organism and a cystic-fibrosis pathogen, and incompleteness alone
+manufactures 0.42 points of illusion.
+
+Two gates, closing at different depths — functional at 90%, taxonomic at 50%.
+The gradient was measured, not assumed.
+
+A footnote worth stating: dropping 9.7% of bases produced M=19.8% missing
 BUSCOs. Marker loss clusters — completeness is itself an estimate with
 variance, which is why the thresholds are conservative.
 
