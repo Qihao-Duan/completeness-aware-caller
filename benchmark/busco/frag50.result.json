@@ -1,0 +1,26 @@
+{
+  "C": 48.3,
+  "S": 48.3,
+  "D": 0.0,
+  "F": 3.4,
+  "M": 48.3,
+  "n": 116,
+  "score_string": "C:48.3%[S:48.3%,D:0.0%],F:3.4%,M:48.3%,n:116",
+  "lineage": "bacteria_odb12",
+  "mode": "prok_genome_prod",
+  "run_parameters": {
+    "input": "../data/degraded/stm815_frag50.fna",
+    "output": "../data/busco/frag50",
+    "demo": false,
+    "demo_live": false,
+    "mode": "genome",
+    "augustus": false,
+    "lineage": "bacteria_odb12",
+    "auto_lineage": false,
+    "auto_lineage_euk": false,
+    "auto_lineage_prok": false,
+    "cpu": 8,
+    "download_path": null,
+    "organism": null
+  }
+}

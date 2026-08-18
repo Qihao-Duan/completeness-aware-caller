@@ -1,0 +1,12 @@
+degraded/stm815_frag100.fna	stm815/ncbi_dataset/data/GCF_000020045.1/GCF_000020045.1_ASM2004v1_genomic.fna	100	2773	2776
+degraded/stm815_frag100.fna	lb400/ncbi_dataset/data/GCF_000013645.1/GCF_000013645.1_ASM1364v1_genomic.fna	81.6851	1286	2776
+degraded/stm815_frag100.fna	j2315/ncbi_dataset/data/GCF_000009485.1/GCF_000009485.1_ASM948v1_genomic.fna	81.0172	1082	2776
+degraded/stm815_frag50.fna	stm815/ncbi_dataset/data/GCF_000020045.1/GCF_000020045.1_ASM2004v1_genomic.fna	100	1398	1400
+degraded/stm815_frag50.fna	lb400/ncbi_dataset/data/GCF_000013645.1/GCF_000013645.1_ASM1364v1_genomic.fna	81.2787	616	1400
+degraded/stm815_frag50.fna	j2315/ncbi_dataset/data/GCF_000009485.1/GCF_000009485.1_ASM948v1_genomic.fna	80.5753	549	1400
+degraded/stm815_frag70.fna	stm815/ncbi_dataset/data/GCF_000020045.1/GCF_000020045.1_ASM2004v1_genomic.fna	100	1927	1929
+degraded/stm815_frag70.fna	lb400/ncbi_dataset/data/GCF_000013645.1/GCF_000013645.1_ASM1364v1_genomic.fna	81.445	887	1929
+degraded/stm815_frag70.fna	j2315/ncbi_dataset/data/GCF_000009485.1/GCF_000009485.1_ASM948v1_genomic.fna	80.749	758	1929
+degraded/stm815_frag90.fna	stm815/ncbi_dataset/data/GCF_000020045.1/GCF_000020045.1_ASM2004v1_genomic.fna	100	2502	2504
+degraded/stm815_frag90.fna	lb400/ncbi_dataset/data/GCF_000013645.1/GCF_000013645.1_ASM1364v1_genomic.fna	81.5069	1128	2504
+degraded/stm815_frag90.fna	j2315/ncbi_dataset/data/GCF_000009485.1/GCF_000009485.1_ASM948v1_genomic.fna	80.8304	952	2504

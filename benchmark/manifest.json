@@ -1,0 +1,22 @@
+{
+  "frag100": {
+    "windows_total": 175,
+    "windows_kept": 175,
+    "bp_kept": 8676562
+  },
+  "frag90": {
+    "windows_total": 175,
+    "windows_kept": 158,
+    "bp_kept": 7826562
+  },
+  "frag70": {
+    "windows_total": 175,
+    "windows_kept": 122,
+    "bp_kept": 6031454
+  },
+  "frag50": {
+    "windows_total": 175,
+    "windows_kept": 88,
+    "bp_kept": 4376561
+  }
+}
