@@ -24,7 +24,7 @@ machinery this strain uses to signal its legume host and trigger nodulation.
 A naive pipeline now reports: **this organism cannot nodulate.**
 It is wrong, and nothing in its output says so.
 
-`completeness-aware-caller` reports instead:
+`completeness-aware-caller`, fed the real frag70 BUSCO result (C=68.1%), reports instead:
 
 ```
 | nodC | CANNOT CONCLUDE | 0.68 | CANNOT CONCLUDE absence: the assembly is only
@@ -32,15 +32,23 @@ It is wrong, and nothing in its output says so.
 Re-sequence or close the assembly before asserting loss of function. |
 ```
 
-**And a finding we did not go looking for.** `nifH` survives every degradation
-level — not by luck, but because STM815 carries *two* copies of it on pBPHY02
-(at 517,691 and 582,554). One copy is lost at 70% retention; the other keeps
-the gene detectable. `nifT` is likewise duplicated on pBPHY02, and `nodI`
-carries its two copies on *different replicons* — chromosome 1 and pBPHY02 —
-which is what keeps it findable at frag70 after the plasmid copy is lost. Whether a gene
-goes silently missing from a fragmented assembly is decided by its copy
-number, not by its importance — and single-copy genes are the vulnerable ones.
-No pipeline currently tells you this.
+**And a finding we did not go looking for.** What decides whether a gene
+survives fragmentation is not how important it is, and not simply how many
+copies it has — it is **which 50 kb window the copies fall in**. All four
+genes that vanish at frag70 (`nodB`, `nodC`, `nodS`, `nodU`), together with
+the plasmid copy of `nodI`, sit inside a single window, pBPHY02
+450,000–500,000. One window was dropped and the entire nod cluster went with
+it. Duplication helps only when the copies land in *different* windows:
+`nifH`'s two copies are in separate windows and it survives every level,
+while `nifT`'s two copies are both in the 500,000–550,000 window and give it
+no protection at all. Ten single-copy genes are never lost at any level.
+
+This has a consequence the tool's own arithmetic does not capture: gene loss
+is **correlated by physical co-location**, so `P(miss) = 1 − completeness`,
+which assumes independence, understates the risk for a clustered operon and
+overstates it for a dispersed gene set. Real assemblies lose contiguous
+stretches too, so functional annotation fails in blocks rather than at
+random.
 
 ---
 
@@ -92,7 +100,8 @@ the gate fires on a modelling decision rather than on a caught error. The two
 gates close at different depths, functional at 90% and taxonomic at 50%, but
 only the first depth was established by an observed mistake.
 
-A footnote worth stating: at frag90, dropping 9.8% of bases produced M=19.8%
+A footnote worth stating: at frag90, dropping 9.8% of bases (17 of 175
+windows, which is 9.7% of *windows* — an easy slip) produced M=19.8%
 missing BUSCOs — roughly double. At frag70 and frag50 the two track closely
 (30.5 vs 30.2, 49.6 vs 48.3), so this is a mild-degradation effect rather than
 general clustering. Completeness is an estimate carrying variance, which is why
@@ -106,8 +115,8 @@ base loss with loss of contiguity.
 
 | Decision | Value | Grounding |
 |----------|-------|-----------|
-| Minimum completeness to assert absence | 0.95 | Caps P(missed \| present) ≈ 1−C at 5%; anchored to MIMAG tiers (Bowers et al. 2017) |
-| ANI drift model | 0.82 × (1−C) points | Calibrated on this benchmark (0.41 pts observed drift at 50% retention) |
+| Minimum completeness to assert absence | 0.95 | Caps P(missed \| present) ≈ 1−C at 5% under an independence assumption this benchmark shows is violated. MIMAG (Bowers 2017) has no 95% tier — its lines are >90% and ≥50% — so this is our choice, stricter than MIMAG, not a standard |
+| ANI drift model | 0.82 × (1−C) points | A **single-point** fit: frag50 LB400 drift (0.4064) ÷ base-loss fraction (0.4956). Fitted on base retention but consumed as BUSCO C%; refitting on C% gives 0.786, on the J2315 arm 0.89 |
 | Ranking safety factor | 2× drift | Signal must beat twice the noise |
 | Species-boundary zone | 94–96% ANI | Jain et al. 2018 |
 

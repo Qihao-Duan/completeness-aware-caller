@@ -65,9 +65,9 @@ Three names carry more than one copy:
 | `nifT` | 2 | pBPHY02 514,280–514,498 and 548,416–548,634 |
 | `nodI` | 2 | **chromosome 1** 1,855,625–1,856,539 and pBPHY02 488,393–489,307 |
 
-`nodI` is the only gene whose copies sit on different replicons. This is
-consequential: copy number, and where the copies live, decides which genes a
-fragmented assembly can still show you. See §6.
+`nodI` is the only gene whose copies sit on different replicons. What actually
+decides survival, though, is not copy count but which 50 kb window each copy
+lands in — see §6.
 
 ## 4. How the data was generated
 
@@ -128,20 +128,26 @@ A gene is **undetectable** at a level only when *every* copy fell into a
 discarded window, so a search genuinely returns nothing. The truth never
 changes: all 18 genes are present in the organism at every level.
 
-| Level | Undetectable | Saved by duplication | Any copy fragmented |
+| Level | Undetectable (every copy lost) | Survived on a second copy | Partially retained |
 |---|---|---|---|
 | frag100 | — | — | — |
 | frag90 | — | — | — |
-| frag70 | `nodB` `nodC` `nodS` `nodU` | `nifH`, `nodI` | `nifA` |
-| frag50 | `nodB` `nodC` `nodI` `nodS` `nodU` | `nifH` | `nifA` |
+| frag70 | `nodB` `nodC` `nodS` `nodU` | `nifH`, `nodI` | `nifA` (164/1,644 bp) |
+| frag50 | `nodB` `nodC` `nodI` `nodS` `nodU` | `nifH` | `nifA` (164/1,644 bp) |
+
+`nifA` belongs to neither column cleanly. It straddles the 500,000 window
+boundary, so 164 of its 1,644 bp survive at frag70 and frag50. Whether a
+search finds a 10% remnant is a property of the search, not of the assembly,
+which is why the benchmark reports it separately rather than forcing it into
+present or absent.
 
 At frag70 the entire Nod-factor biosynthesis set goes dark. A pipeline that
 converts "not found" into "absent" concludes **this strain cannot nodulate** —
 false, and unmarked as uncertain.
 
 `nodI` is instructive: at frag70 it survives only because its second copy sits
-on chromosome 1, a different replicon from the one carrying the rest of the
-cluster. By frag50 both copies are gone.
+on chromosome 1, far from the window that took the rest of the cluster. By
+frag50 both copies are gone.
 
 ### 5.3 Species assignment
 
@@ -178,12 +184,21 @@ does not exhibit an error.
    say so.** At frag70, four real genes are undetectable and a naive caller
    reports them absent with no uncertainty attached.
 
-2. **Copy number, not importance, decides what survives fragmentation.**
-   `nifH` — the canonical nitrogen-fixation marker, the first gene anyone
-   looks for — is detectable at every level, purely because STM815 carries two
-   copies. Single-copy genes are the vulnerable ones. No completeness metric
-   in common use reports this, and it means a gene-presence result carries a
-   hidden dependency on the genome's own redundancy.
+2. **Loss is correlated by physical co-location, not by copy number.**
+   Every gene that disappears at frag70 — `nodB`, `nodC`, `nodS`, `nodU` and
+   the plasmid copy of `nodI` — sits in one 50 kb window, pBPHY02
+   450,000–500,000. A single dropped window took the whole nod cluster.
+   Duplication protects only when copies fall in different windows: `nifH`'s
+   two copies are in separate windows and it survives every level, whereas
+   `nifT`'s two copies share the 500,000–550,000 window and confer nothing.
+   Ten single-copy genes are never lost at any level.
+
+   This matters beyond bookkeeping. `P(miss) = 1 − completeness`, the
+   arithmetic behind every abstention threshold here and in the tool built on
+   it, assumes genes are lost independently. They are not. A co-located
+   operon is far more likely to vanish as a block than that formula allows,
+   and a dispersed gene set far less. Real assemblies also lose contiguous
+   stretches, so this is a property of the problem, not of the simulation.
 
 ## 7. Files
 
@@ -268,6 +283,13 @@ strategy does not win.
   calibrated, never as validated.
 - **BUSCO completeness is an estimate with variance**, most visibly at frag90,
   where 9.8% base loss produced 19.8% marker loss.
+- **Gene loss is not independent, but the thresholds assume it is.** See §6.
+  Any P(miss) computed as 1 − completeness is wrong for a clustered gene set
+  in a direction this dataset can demonstrate but does not correct for.
+- **`nifA` falls between the categories.** It straddles the 500,000 window
+  boundary and retains 164 of 1,644 bp at frag70 and frag50, so it is neither
+  "undetectable" nor safely present. Whether such a remnant is found depends
+  entirely on the search method.
 - **No contamination axis.** Real MAGs are both incomplete *and* contaminated;
   only incompleteness is modelled here.
 
