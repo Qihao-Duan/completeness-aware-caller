@@ -1,0 +1,9 @@
+# Exact toolchain the published numbers were produced with (2026-08-18).
+# Re-running with other versions will give close but not identical results.
+name: stm815-benchmark
+channels: [conda-forge, bioconda]
+dependencies:
+  - python=3.12
+  - busco=6.0.0        # lineage dataset: bacteria_odb12 (n=116)
+  - fastani=1.34
+  # prodigal 2.6.3 and hmmer arrive as BUSCO dependencies

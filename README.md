@@ -13,7 +13,9 @@ support the claim. The deliverable is the refusal.
 ## The problem, in one number
 
 Take *Paraburkholderia phymatum* STM815 — a textbook symbiont, complete
-genome, all 21 `nif`/`nod`/`fix` records sitting on plasmid pBPHY02. Degrade
+genome, 21 `nif`/`nod`/`fix` records across 18 distinct gene names — 18 of
+those records on the symbiosis plasmid pBPHY02, three (`fixL`, `fixJ` and one
+copy of `nodI`) on chromosome 1. Degrade
 it to 70% of its contigs, the sort of completeness that passes as a perfectly
 publishable MAG, and every copy of `nodB`, `nodC`, `nodS` and `nodU` falls
 into the discarded fraction — the entire Nod-factor biosynthesis set, the
@@ -33,7 +35,9 @@ Re-sequence or close the assembly before asserting loss of function. |
 **And a finding we did not go looking for.** `nifH` survives every degradation
 level — not by luck, but because STM815 carries *two* copies of it on pBPHY02
 (at 517,691 and 582,554). One copy is lost at 70% retention; the other keeps
-the gene detectable. `nodI` and `nifT` are likewise duplicated. Whether a gene
+the gene detectable. `nifT` is likewise duplicated on pBPHY02, and `nodI`
+carries its two copies on *different replicons* — chromosome 1 and pBPHY02 —
+which is what keeps it findable at frag70 after the plasmid copy is lost. Whether a gene
 goes silently missing from a fragmented assembly is decided by its copy
 number, not by its importance — and single-copy genes are the vulnerable ones.
 No pipeline currently tells you this.
@@ -70,21 +74,31 @@ are present in the organism throughout.
 | 70%  | 0.681 | 81.45 | 80.75 | 0.70 | 0.26 | 0.52 | rank |
 | 50%  | 0.483 | 81.28 | 80.58 | 0.70 | 0.42 | **0.85** | **CANNOT CONCLUDE** |
 
-Read the last three columns. The margin is essentially flat at 0.67–0.70,
-because the real difference between an environmental *Paraburkholderia* and a
-clinical *B. cepacia*-complex lineage does not change when you shred the
-assembly. The threshold climbs from 0.03 to 0.85, because drift does. They
-cross at 50% retention, and the gate shuts. Note what is being separated:
-0.70 ANI points is the entire evidentiary distance between a nitrogen-fixing
-soil organism and a cystic-fibrosis pathogen, and incompleteness alone
-manufactures 0.42 points of illusion.
+Read the last three columns. The margin stays near 0.67–0.70 — it is a
+property of the two organisms, not of the assembly — while the modelled
+threshold climbs from 0.03 to 0.85 as drift grows. They cross at 50%
+retention and the gate shuts. What is being separated is worth naming: 0.70
+ANI points is the entire evidentiary distance between a nitrogen-fixing soil
+organism and a cystic-fibrosis pathogen, and fragmentation alone shifts
+absolute ANI by 0.41 points.
 
-Two gates, closing at different depths — functional at 90%, taxonomic at 50%.
-The gradient was measured, not assumed.
+**State this result conservatively.** LB400 is the closer reference at every
+level and the ranking never flips; the margin in fact *widens* slightly
+(0.6679 → 0.7034) rather than shrinking. So the benchmark bounds the noise
+fragmentation introduces — it does not contain a case where fragmentation
+produced a wrong species call. The functional failure in the first table is
+demonstrated, with a known right answer. This second one is suggestive, and
+the gate fires on a modelling decision rather than on a caught error. The two
+gates close at different depths, functional at 90% and taxonomic at 50%, but
+only the first depth was established by an observed mistake.
 
-A footnote worth stating: dropping 9.7% of bases produced M=19.8% missing
-BUSCOs. Marker loss clusters — completeness is itself an estimate with
-variance, which is why the thresholds are conservative.
+A footnote worth stating: at frag90, dropping 9.8% of bases produced M=19.8%
+missing BUSCOs — roughly double. At frag70 and frag50 the two track closely
+(30.5 vs 30.2, 49.6 vs 48.3), so this is a mild-degradation effect rather than
+general clustering. Completeness is an estimate carrying variance, which is why
+the thresholds are conservative. Note also that frag100 already scores 98.3%,
+not 100%: it keeps every base but is cut into 175 contigs, so this axis mixes
+base loss with loss of contiguity.
 
 ---
 

@@ -1,0 +1,78 @@
+# The benchmark Job: reproduce the STM815 degradation evidence from nothing.
+#
+# Downloads three genomes from NCBI, degrades the truth genome to four
+# retention levels, runs BUSCO on each and FastANI against both references,
+# then gates every level through the caller. Expect 30-90 minutes depending on
+# CPU; BUSCO dominates.
+#
+# Needs egress to api.ncbi.nlm.nih.gov and the BUSCO dataset servers. If your
+# cluster has a default-deny NetworkPolicy, allow those before running.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: benchmark
+  namespace: clawbio
+  labels:
+    app.kubernetes.io/name: completeness-aware-caller
+    app.kubernetes.io/component: benchmark
+spec:
+  backoffLimit: 1
+  # BUSCO on a 8.7 Mb genome, four times over, plus downloads.
+  activeDeadlineSeconds: 14400
+  ttlSecondsAfterFinished: 172800
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: completeness-aware-caller
+        app.kubernetes.io/component: benchmark
+    spec:
+      restartPolicy: Never
+      securityContext:
+        # micromamba images run as uid 1000 (mambauser), not our 10001.
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: benchmark
+          image: ghcr.io/qihao-duan/completeness-aware-caller:0.1.0-benchmark
+          imagePullPolicy: IfNotPresent
+          command: ["/usr/local/bin/_entrypoint.sh"]
+          args: ["bash", "/app/scripts/run_benchmark.sh", "/data"]
+          env:
+            - name: BUSCO_CPU
+              value: "4"
+            - name: BUSCO_LINEAGE
+              value: bacteria_odb12
+            - name: BUSCO_DOWNLOAD_PATH
+              # Cached on the PVC so re-runs skip the ~74 MB lineage download.
+              value: /data/busco_downloads
+          securityContext:
+            allowPrivilegeEscalation: false
+            # BUSCO writes scratch outside /data, so the root fs stays writable.
+            readOnlyRootFilesystem: false
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests:
+              cpu: "4"
+              memory: 8Gi
+              ephemeral-storage: 4Gi
+            limits:
+              cpu: "8"
+              memory: 16Gi
+              ephemeral-storage: 16Gi
+          volumeMounts:
+            - name: data
+              mountPath: /data
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: caller-data
+        - name: tmp
+          emptyDir:
+            sizeLimit: 8Gi

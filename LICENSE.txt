@@ -1,0 +1,10 @@
+Data and documentation in this dataset: Creative Commons Attribution 4.0
+International (CC BY 4.0).  https://creativecommons.org/licenses/by/4.0/
+
+Scripts (scripts/*.py, scripts/*.sh): MIT License.
+
+The three source genome assemblies are NOT redistributed here. They are
+public NCBI RefSeq records; see DATASET.md for accessions.
+
+BUSCO lineage datasets (bacteria_odb12) are not redistributed here; BUSCO
+downloads them from https://busco-data.ezlab.org/ under its own terms.

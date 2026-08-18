@@ -1,0 +1,51 @@
+# Namespace, shared storage and the gene-call input.
+#
+# The PVC is where every Job reads and writes. The benchmark Job fills it with
+# genomes, degraded assemblies, BUSCO runs and the FastANI matrix; the caller
+# Job reads those and writes reports back. Sizing assumes one full benchmark:
+# ~26 GB is generous, ~10 GB is the realistic floor.
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: clawbio
+  labels:
+    app.kubernetes.io/name: completeness-aware-caller
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: caller-data
+  namespace: clawbio
+  labels:
+    app.kubernetes.io/name: completeness-aware-caller
+spec:
+  accessModes:
+    # ReadWriteOnce is enough for sequential Jobs. Switch to ReadWriteMany if
+    # you want the caller and benchmark Jobs to run concurrently on the same
+    # volume — that needs a storage class which supports it (NFS, CephFS, EFS).
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 26Gi
+  # storageClassName: <your-class>   # omit to use the cluster default
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: caller-genes
+  namespace: clawbio
+  labels:
+    app.kubernetes.io/name: completeness-aware-caller
+data:
+  # Gene search results to gate. `found` is what YOUR search returned; this
+  # skill decides whether "not found" is allowed to become "absent".
+  # The default mirrors the real frag70 level of the STM815 benchmark:
+  # the nod cluster loses every copy, while nifH survives on its second copy.
+  genes.json: |
+    [
+      {"gene": "nodC", "found": false},
+      {"gene": "nodB", "found": false},
+      {"gene": "nifH", "found": true},
+      {"gene": "nifD", "found": true}
+    ]

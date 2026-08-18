@@ -1,0 +1,126 @@
+{
+  "benchmark_id": "stm815-degradation-v1",
+  "genes": [
+    "fixJ",
+    "fixL",
+    "nifA",
+    "nifB",
+    "nifD",
+    "nifE",
+    "nifH",
+    "nifK",
+    "nifN",
+    "nifT",
+    "nifV",
+    "nifW",
+    "nifX",
+    "nodB",
+    "nodC",
+    "nodI",
+    "nodS",
+    "nodU"
+  ],
+  "levels": {
+    "frag100": {
+      "undetectable_genes": [],
+      "protected_by_duplication": [],
+      "any_copy_fragmented": [],
+      "busco_C": 98.3,
+      "busco_M": 0.0,
+      "bp_dropped_pct": 0.0,
+      "score_string": "C:98.3%[S:98.3%,D:0.0%],F:1.7%,M:0.0%,n:116",
+      "ani_lb400": 81.6851,
+      "ani_j2315": 81.0172,
+      "margin": 0.67,
+      "modelled_drift": 0.01,
+      "threshold_2x": 0.03,
+      "observed_ani_shift_vs_frag100": 0.0,
+      "gate": "rank"
+    },
+    "frag90": {
+      "undetectable_genes": [],
+      "protected_by_duplication": [],
+      "any_copy_fragmented": [],
+      "busco_C": 78.4,
+      "busco_M": 19.8,
+      "bp_dropped_pct": 9.8,
+      "score_string": "C:78.4%[S:78.4%,D:0.0%],F:1.7%,M:19.8%,n:116",
+      "ani_lb400": 81.5069,
+      "ani_j2315": 80.8304,
+      "margin": 0.68,
+      "modelled_drift": 0.18,
+      "threshold_2x": 0.35,
+      "observed_ani_shift_vs_frag100": 0.18,
+      "gate": "rank"
+    },
+    "frag70": {
+      "undetectable_genes": [
+        "nodB",
+        "nodC",
+        "nodS",
+        "nodU"
+      ],
+      "protected_by_duplication": [
+        "nifH",
+        "nodI"
+      ],
+      "any_copy_fragmented": [
+        "nifA"
+      ],
+      "busco_C": 68.1,
+      "busco_M": 30.2,
+      "bp_dropped_pct": 30.5,
+      "score_string": "C:68.1%[S:68.1%,D:0.0%],F:1.7%,M:30.2%,n:116",
+      "ani_lb400": 81.445,
+      "ani_j2315": 80.749,
+      "margin": 0.7,
+      "modelled_drift": 0.26,
+      "threshold_2x": 0.52,
+      "observed_ani_shift_vs_frag100": 0.24,
+      "gate": "rank"
+    },
+    "frag50": {
+      "undetectable_genes": [
+        "nodB",
+        "nodC",
+        "nodI",
+        "nodS",
+        "nodU"
+      ],
+      "protected_by_duplication": [
+        "nifH"
+      ],
+      "any_copy_fragmented": [
+        "nifA"
+      ],
+      "busco_C": 48.3,
+      "busco_M": 48.3,
+      "bp_dropped_pct": 49.6,
+      "score_string": "C:48.3%[S:48.3%,D:0.0%],F:3.4%,M:48.3%,n:116",
+      "ani_lb400": 81.2787,
+      "ani_j2315": 80.5753,
+      "margin": 0.7,
+      "modelled_drift": 0.42,
+      "threshold_2x": 0.85,
+      "observed_ani_shift_vs_frag100": 0.41,
+      "gate": "cannot_conclude"
+    }
+  },
+  "degraded_assembly_sha256": {
+    "stm815_frag100.fna": "b73d9eacd51355364d750a00fdeb2c208e2cf04af3e6f9a2dccfa700bd77bfa2",
+    "stm815_frag90.fna": "b3766b5a5f99312f43eab97a86d7f1b1cfffdf2345576158bacd3c33aa64ca77",
+    "stm815_frag70.fna": "7bc1dbec2d1ba1b90ea0b996ed0c1758992ab7c7f3edd29dfd060c397946a3f3",
+    "stm815_frag50.fna": "08e7b2dd4501b2f6e3a3b6fcabe623a57c5e8699ed99812f10cc954e4a60d1aa"
+  },
+  "generator": {
+    "script": "scripts/degrade_genome.py",
+    "seed": 42,
+    "window_bp": 50000,
+    "windows_total": 175,
+    "source_accession": "GCF_000020045.1"
+  },
+  "references": {
+    "LB400": "GCF_000013645.1",
+    "J2315": "GCF_000009485.1"
+  }
+}

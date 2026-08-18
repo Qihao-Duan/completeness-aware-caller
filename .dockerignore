@@ -1,0 +1,13 @@
+.git
+.github
+.gitignore
+.pytest_cache
+__pycache__
+*.pyc
+.DS_Store
+data/
+benchmark/busco/
+k8s/
+DEPLOY.md
+PITCH.md
+README.md
